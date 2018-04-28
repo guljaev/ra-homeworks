@@ -41,12 +41,6 @@ class App extends React.Component {
 			<section>
 				<Charts>
 					{ data.map((serie, serieIndex) => {
-						var sortedSerie = serie.slice(0),
-							sum;
-
-						sum = serie.reduce((carry, current) => carry + current, 0);
-						sortedSerie.sort(compareNumbers);
-
 						return (
 							<ChartsSerie {...newProps} 
 								className={'Charts--serie'} 
@@ -82,11 +76,7 @@ class App extends React.Component {
 
 				<Charts>
 					{ data.map((serie, serieIndex) => {
-						var sortedSerie = serie.slice(0),
-							sum;
-
-						sum = serie.reduce((carry, current) => carry + current, 0);
-						sortedSerie.sort(compareNumbers);
+						const sum = serie.reduce((carry, current) => carry + current, 0);
 
 						return (
 							<ChartsSerie {...newProps} 
@@ -123,10 +113,7 @@ class App extends React.Component {
 
 				<Charts>
 					{ data.map((serie, serieIndex) => {
-						var sortedSerie = serie.slice(0),
-							sum;
-
-						sum = serie.reduce((carry, current) => carry + current, 0);
+						const sortedSerie = serie.slice(0);
 						sortedSerie.sort(compareNumbers);
 
 						return (
@@ -165,12 +152,6 @@ class App extends React.Component {
 
 				<Charts horizontal>
 					{ data.map((serie, serieIndex) => {
-						var sortedSerie = serie.slice(0),
-							sum;
-
-						sum = serie.reduce((carry, current) => carry + current, 0);
-						sortedSerie.sort(compareNumbers);
-
 						return (
 							<ChartsSerie {...newProps} 
 								className={'Charts--serie'} 
