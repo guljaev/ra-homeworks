@@ -23,9 +23,8 @@ class AccSection extends React.Component {
 	render() {
 		return (
 			<section className={this.state.open ? 'section open' : 'section'}>
-				<button onClick={this.toggleAccSection.bind(this)}>toggle</button>
-				{/* <button onClick={() => console.log('click')}>toggle</button> */}
-				<h3 className="sectionhead">{this.props.title}</h3>
+				<button>toggle</button>
+				<h3 className="sectionhead" onClick={this.toggleAccSection.bind(this)}>{this.props.title}</h3>
 				<div className="articlewrap">
 					<div className="article">
 						{this.props.children}
