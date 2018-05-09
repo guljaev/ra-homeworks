@@ -9,3 +9,30 @@ const DateInput = props => {
     </div>
   )
 };
+
+const birthDatePropType = (props, propName, componentName) => {
+  let birthDate = props[propName];
+  let isBirthDate = (typeof birthDate === 'string') && /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(birthDate);
+  if (!isBirthDate) {
+    return new Error(`Неверный формат параметра ${propName} в компоненте ${componentName}: необходим указать дату рождения в формате YYYY-MM-DD`);
+  }
+}
+
+function getCurrentISOLocaleDate() {
+  const date = new Date();
+  // корректируем дату, чтобы она в зоне UTC показывала время такое, какое сейчас в нашем часовом поясе
+  date.setUTCMinutes(date.getUTCMinutes() - date.getTimezoneOffset());
+  return date.toISOString().slice(0, 10);
+}
+
+DateInput.propTypes = {
+  onChange: PropTypes.func,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  // value: PropTypes.string,
+  value: birthDatePropType
+};
+
+DateInput.defaultProps = {
+  value: getCurrentISOLocaleDate()
+};
