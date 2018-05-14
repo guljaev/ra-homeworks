@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <script type="text/babel" src="./js/FeedbackForm.js"></script>
+  <script type="text/babel" src="./js/FeedbackForm2.js"></script>
   <script type="text/babel">
     const form = {
       salutation: 'Мисис',
@@ -29,7 +29,7 @@
         <section className="content">
           <h1 className="content__heading">Отправить нам сообщение</h1>
           <p className="content__lede">Используйте эту простую форму чтобы связаться с нами.</p>
-          <FeedbackForm data={form} onSubmit={data => output.value = data} />
+          <FeedbackForm2 data={form} onSubmit={data => output.value = data} />
           <output ref={field => output = field} />
         </section>
       );
