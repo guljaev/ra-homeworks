@@ -13,3 +13,8 @@ const SearchBoxView = ({ fixed, getSearchElem }) => {
     </section>
   );
 };
+
+SearchBoxView.propTypes = {
+  fixed: PropTypes.bool,
+  getSearchElem: PropTypes.func
+};
