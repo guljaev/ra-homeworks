@@ -1,6 +1,11 @@
 class Cart extends React.Component {
-  constructor(props) {
-    super(props);
+  static get propTypes() {
+    return {
+      isOpen: PropTypes.bool.isRequired,
+      items: PropTypes.array.isRequired,
+      toggleCart: PropTypes.func.isRequired,
+      clearCart: PropTypes.func.isRequired
+    }
   }
 
   shouldComponentUpdate(nextProps) {
@@ -16,5 +21,4 @@ class Cart extends React.Component {
       <CartView {...this.props} />
     );
   }
-
 }
