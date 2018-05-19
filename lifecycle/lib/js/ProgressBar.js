@@ -2,8 +2,13 @@ class ProgressBar extends React.Component {
   constructor(props) {
     super(props);
     this.canvas = null;
-    this.total = props.total;
-    this.completed = props.completed;
+  }
+
+  static get propTypes() {
+    return {
+      total: PropTypes.number.isRequired,
+      completed: PropTypes.number.isRequired
+    };
   }
 
   showChart(completed, total) {
