@@ -12,21 +12,23 @@ function modifyDate(date) {
 	return '12 часов назад'; // разница меньше часа
 }
 
-const changeDateView = (modifyDate) => Component => class DateTimeChanged extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
+function changeDateView(Component, modifyDate) {
+	return class DateTimeChanged extends React.Component {
+		constructor(props) {
+			super(props);
+			this.state = {};
+		}
 
-	componentWillMount() {
-		this.setState({ date: modifyDate(this.props.date) });
-	}
+		componentWillMount() {
+			this.setState({ date: modifyDate(this.props.date) });
+		}
 
-	render() {
-		// console.log(this.props);
-		return <Component {...this.state} />;
-	}
-};
+		render() {
+			console.log(this.props);
+			return <Component {...this.state} />;
+		}
+	};
+}
 
 const DateTimeInitial = props => {
 	return (
@@ -34,4 +36,4 @@ const DateTimeInitial = props => {
 	);
 };
 
-const DateTime = changeDateView(modifyDate)(DateTimeInitial);
+const DateTime = changeDateView(DateTimeInitial, modifyDate);
