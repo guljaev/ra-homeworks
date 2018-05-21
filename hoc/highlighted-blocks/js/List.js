@@ -27,7 +27,7 @@ const modifyView = (Component) => class modifiedViewComponent extends React.Comp
 };
 
 const ModifiedViewArticle = modifyView(Article);
-const ModifiedViewVideo = modifyView(Article);
+const ModifiedViewVideo = modifyView(Video);
 
 const List = props => {
     return props.list.map(item => {
