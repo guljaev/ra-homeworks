@@ -5,16 +5,21 @@ const ReactRouter = window.ReactRouterDOM;
 const Router = ReactRouterDOM.HashRouter;
 const Route = ReactRouterDOM.Route;
 
-const RecipesList = () => (
-    <div>
-        <h1>Рецепты</h1>
-        <ul>
-            <li>Борщ</li>
-            <li>Утка по-египетски</li>
-            <li>рыба-шалунья</li>
-        </ul>
-    </div>
-);
+const RecipesList = (props) => {
+    // console.log(props);
+    const { match } = props;
+    return (
+        <div>
+            <h1>Рецепты</h1>
+            <ul>
+                <li>Борщ</li>
+                <li>Утка по-египетски</li>
+                <li>рыба-шалунья</li>
+            </ul>
+            <Route path={`${match.url}/new`} component={NewRecipe} />
+        </div>
+    );
+};
 
 const NewRecipe = () => (
     <div>
@@ -29,8 +34,7 @@ class App extends React.Component {
             <Router>
                 <div>
                     <h1>Hello, amigo!</h1>
-                    <Route exact path="/recipes" component={RecipesList} />
-                    <Route path="/new" component={NewRecipe} />
+                    <Route path="/recipes" component={RecipesList} />
                 </div>
             </Router>
         );
