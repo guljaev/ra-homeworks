@@ -4,6 +4,7 @@ const ReactRouter = window.ReactRouterDOM;
 // const {Route, Switch, BrowserRouter} = ReactRouterDOM;
 const Router = ReactRouterDOM.HashRouter;
 const Route = ReactRouterDOM.Route;
+const Link = ReactRouterDOM.Link;
 
 const RecipesList = () => (
     <div>
@@ -29,8 +30,13 @@ class App extends React.Component {
             <Router>
                 <div>
                     <h1>Hello, amigo!</h1>
+                    <nav>
+                        <Link to="/recipes">Рецепты</Link>
+                        <div />
+                        <Link to="/recipes/new">Новый рецепт</Link>
+                    </nav>
                     <Route exact path="/recipes" component={RecipesList} />
-                    <Route path="/new" component={NewRecipe} />
+                    <Route exact path="/recipes/new" component={NewRecipe} />
                 </div>
             </Router>
         );
