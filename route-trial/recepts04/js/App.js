@@ -5,6 +5,16 @@ const ReactRouter = window.ReactRouterDOM;
 const Router = ReactRouterDOM.HashRouter;
 const Route = ReactRouterDOM.Route;
 const Link = ReactRouterDOM.Link;
+const NavLink = ReactRouterDOM.NavLink;
+const Switch = ReactRouterDOM.Switch;
+
+const activeStyle = {
+    color: 'red'
+};
+
+const style = {
+    display: 'block'
+};
 
 const RecipesList = () => (
     <div>
@@ -31,12 +41,33 @@ class App extends React.Component {
                 <div>
                     <h1>Hello, amigo!</h1>
                     <nav>
-                        <Link to="/recipes">Рецепты</Link>
-                        <div />
-                        <Link to="/recipes/new">Новый рецепт</Link>
+                        {/* <NavLink to="/recipes" style={style} activeStyle={activeStyle}>Рецепты</NavLink>
+                        <NavLink to="/recipes/" style={style} activeStyle={activeStyle}>Рецепты со slash</NavLink>
+                        <NavLink to="/recipes/new?foo=bar" style={style} activeStyle={activeStyle}>Новый рецепт с параметрами</NavLink> */}
+
+                        <NavLink to='/recipes' style={style} activeStyle={activeStyle}>
+                            Рецепты
+                        </NavLink>
+                        <NavLink strict to='/recipes/' style={style} activeStyle={activeStyle}>
+                            Рецепты с аттрибутом strict
+                        </NavLink>
+                        <NavLink exact to='/recipes' style={style} activeStyle={activeStyle}>
+                            Рецепты с аттрибутом exact
+                        </NavLink>
+                        <NavLink to='/recipes/new' style={style} activeStyle={activeStyle}>
+                            Новый рецепт
+                        </NavLink>
+                        <NavLink to={{hash: '/recipec/new', search: '?foo=bar'}} style={style} activeStyle={activeStyle}>
+                            Новый рецепт с параметрами
+                        </NavLink>
+                        <NavLink exact to={{hash: '/recipec/new', search: '?foo=bar'}} style={style} activeStyle={activeStyle}>
+                            Новый рецепт с параметрами и аттрибутом exact
+                        </NavLink>
                     </nav>
-                    <Route exact path="/recipes" component={RecipesList} />
-                    <Route exact path="/recipes/new" component={NewRecipe} />
+                    <Switch>
+                        <Route path="/recipes/new" component={NewRecipe} />
+                        <Route path="/recipes" component={RecipesList} />
+                    </Switch>
                 </div>
             </Router>
         );
