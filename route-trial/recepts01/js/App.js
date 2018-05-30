@@ -19,7 +19,7 @@ const RecipesList = () => (
 const NewRecipe = () => (
     <div>
         <div>Новый рецепт</div>
-        <textarea name="recipe" id="recipe" cols="30"_ />
+        <textarea name="recipe" id="recipe" cols="30" />
     </div>
 );
 
@@ -28,8 +28,9 @@ class App extends React.Component {
         return (
             <Router>
                 <div>
-                    <Route path="recipes" component={RecipesList} />
-                    <Route path="new" component={NewRecipe} />
+                    <h1>Hello, amigo!</h1>
+                    <Route path="/recipes" component={RecipesList} />
+                    <Route path="/new" component={NewRecipe} />
                 </div>
             </Router>
         );
